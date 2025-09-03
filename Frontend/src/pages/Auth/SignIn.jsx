@@ -66,7 +66,7 @@ const SignIn = () => {
       .catch((err) => {
         console.log(err.response.data);
         setLoading(false);
-        setError(err.response.data);
+        setError(err.response.data?.message || err.response.data || "Login failed");
         setOpen(true);
       });
   };
@@ -133,7 +133,7 @@ const SignIn = () => {
           message={error}
         >
           <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-            {error}
+            {typeof error === 'object' ? error.message || JSON.stringify(error) : error}
           </Alert>
         </Snackbar>
       ) : (

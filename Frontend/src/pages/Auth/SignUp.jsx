@@ -102,7 +102,7 @@ const SignUp = () => {
           severity={isError ? "error" : "success"}
           sx={{ width: "100%" }}
         >
-          {error}
+          {typeof error === 'object' ? error.message || JSON.stringify(error) : error}
         </Alert>
       </Snackbar>
 
@@ -281,8 +281,7 @@ const SignUp = () => {
       <div className={styles.imageSection}>
         <div className={styles.imagePlaceholder}>
           <div className={styles.placeholderContent}>
-            <h3>Join Our Community!</h3>
-            <p>Create your account and unlock amazing opportunities</p>
+            <img src="/SignUp.png" alt="Signup" />
           </div>
         </div>
       </div>
