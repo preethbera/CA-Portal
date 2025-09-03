@@ -5,13 +5,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem 1rem;
   background: transparent;
+  position: relative;
 }
 
 .toggleContainer {
   margin-bottom: 2rem;
   z-index: 10;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
 }
 
 .toggleButtons {
@@ -22,10 +27,14 @@
   padding: 4px;
   border: 1px solid rgba(255, 49, 49, 0.3);
   box-shadow: 0 8px 32px rgba(255, 49, 49, 0.1);
+  width: 100%;
+  max-width: 320px;
+  min-width: 240px;
 }
 
 .toggleButton {
-  padding: 12px 32px;
+  flex: 1;
+  padding: 12px 24px;
   border: none;
   background: transparent;
   color: rgba(255, 255, 255, 0.8);
@@ -36,6 +45,9 @@
   font-size: 1rem;
   position: relative;
   z-index: 1;
+  min-width: 0;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .toggleButton:hover {
@@ -59,6 +71,11 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   animation: slideIn 0.5s ease-out;
+  transition: all 0.3s ease;
+}
+
+.formContainer > * {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 @keyframes slideIn {
@@ -72,19 +89,95 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .authContainer {
+    padding: 1.5rem 1rem;
+  }
+  
+  .toggleButtons {
+    max-width: 300px;
+    min-width: 220px;
+  }
+  
+  .toggleButton {
+    padding: 11px 20px;
+    font-size: 0.95rem;
+  }
+  
+  .formContainer {
+    max-width: 100%;
+    margin: 0 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .authContainer {
-    padding: 1rem;
+    padding: 1rem 0.5rem;
+    min-height: 100vh;
+  }
+  
+  .toggleContainer {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    padding: 0 1rem;
   }
   
   .toggleButtons {
     width: 100%;
-    justify-content: center;
+    max-width: 280px;
+    min-width: 200px;
   }
   
   .toggleButton {
     flex: 1;
-    padding: 10px 20px;
+    padding: 10px 16px;
     font-size: 0.9rem;
+    min-width: 0;
+  }
+  
+  .formContainer {
+    width: calc(100% - 1rem);
+    margin: 0 0.5rem;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .authContainer {
+    padding: 0.75rem 0.25rem;
+  }
+  
+  .toggleContainer {
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .toggleButtons {
+    max-width: 240px;
+    min-width: 180px;
+    padding: 3px;
+  }
+  
+  .toggleButton {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .formContainer {
+    width: calc(100% - 0.5rem);
+    margin: 0 0.25rem;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .toggleButtons {
+    max-width: 200px;
+    min-width: 160px;
+  }
+  
+  .toggleButton {
+    padding: 6px 8px;
+    font-size: 0.8rem;
   }
 }

@@ -2,6 +2,7 @@
   display: flex;
   min-height: 600px;
   background: transparent;
+  width: 100%;
 }
 
 .imageSection {
@@ -11,11 +12,15 @@
   justify-content: center;
   background: linear-gradient(135deg, rgba(255, 49, 49, 0.1), rgba(218, 37, 32, 0.1));
   position: relative;
+  padding: 2rem;
+  min-height: 300px;
 }
 
 .imagePlaceholder {
-  width: 300px;
-  height: 300px;
+  width: min(300px, 80vw);
+  height: min(300px, 80vw);
+  max-width: 350px;
+  max-height: 350px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 20px;
@@ -24,11 +29,25 @@
   justify-content: center;
   border: 2px dashed rgba(255, 49, 49, 0.3);
   transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.imagePlaceholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 18px;
+  transition: transform 0.3s ease;
+}
+
+.imagePlaceholder:hover img {
+  transform: scale(1.02);
 }
 
 .imagePlaceholder:hover {
-  transform: scale(1.05);
   border-color: rgba(255, 49, 49, 0.5);
+  box-shadow: 0 8px 25px rgba(255, 49, 49, 0.2);
 }
 
 .placeholderContent {
@@ -149,6 +168,25 @@
   transform: translateY(0);
 }
 
+@media (max-width: 1024px) {
+  .signinContainer {
+    min-height: 500px;
+  }
+  
+  .imageSection {
+    padding: 1rem;
+  }
+  
+  .imagePlaceholder {
+    width: min(250px, 70vw);
+    height: min(250px, 70vw);
+  }
+  
+  .formSection {
+    padding: 2rem 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .signinContainer {
     flex-direction: column;
@@ -156,27 +194,79 @@
   }
   
   .imageSection {
-    min-height: 200px;
+    min-height: 250px;
+    padding: 1.5rem;
+    order: 1;
   }
   
   .imagePlaceholder {
-    width: 200px;
-    height: 150px;
-  }
-  
-  .placeholderContent h3 {
-    font-size: 1.2rem;
-  }
-  
-  .placeholderContent p {
-    font-size: 0.9rem;
+    width: min(220px, 60vw);
+    height: min(220px, 60vw);
   }
   
   .formSection {
     padding: 2rem 1rem;
+    order: 2;
+  }
+  
+  .formContent {
+    max-width: 100%;
+  }
+  
+  .formContent h2 {
+    font-size: 1.8rem;
+  }
+  
+  .formContent p {
+    font-size: 0.95rem;
+  }
+  
+  .input {
+    padding: 14px 18px;
+    font-size: 0.95rem;
+  }
+  
+  .label {
+    font-size: 0.9rem;
+    left: 18px;
+  }
+  
+  .submitButton {
+    font-size: 1rem;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageSection {
+    min-height: 200px;
+    padding: 1rem;
+  }
+  
+  .imagePlaceholder {
+    width: min(180px, 50vw);
+    height: min(180px, 50vw);
+  }
+  
+  .formSection {
+    padding: 1.5rem 0.75rem;
   }
   
   .formContent h2 {
     font-size: 1.5rem;
+  }
+  
+  .formContent p {
+    font-size: 0.9rem;
+  }
+  
+  .input {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .label {
+    font-size: 0.85rem;
+    left: 16px;
   }
 }

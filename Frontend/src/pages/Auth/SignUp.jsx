@@ -280,9 +280,7 @@ const SignUp = () => {
       
       <div className={styles.imageSection}>
         <div className={styles.imagePlaceholder}>
-          <div className={styles.placeholderContent}>
-            <img src="/SignUp.png" alt="Signup" />
-          </div>
+          <img src="/SignUp.png" alt="Sign Up" />
         </div>
       </div>
     </div>
