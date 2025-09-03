@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 import styles from './SignUp.module.css';
+import { TailSpin } from "react-loading-icons";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
+import Api from "../../API/Api";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +18,22 @@ const SignUp = () => {
     city: '',
     state: '',
   });
+  const [fieldType, setFieldType] = useState("password");
+  const [error, setError] = useState(false);
+  const [isError, setIsError] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const formElement = useRef(null);
+
+  const toggleVisibility = () => {
+    setFieldType(fieldType === "text" ? "password" : "text");
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -23,11 +44,69 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Sign Up Data:', formData);
+
+    // Map the form data to match the backend expected format
+    const data = {
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      gender: formData.gender.toUpperCase(),
+      phone: formData.mobileNumber,
+      email: formData.email,
+      password: formData.password,
+      college: formData.collegeName,
+      city: formData.city,
+      state: formData.state,
+      sent: new Date().toISOString(),
+    };
+
+    console.log(data);
+
+    setLoading(true);
+
+    Api.post(`/signup`, data)
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(response.statusText);
+        }
+
+        setLoading(false);
+        setOpen(true);
+        setIsError(false);
+        setError("Signup Successful");
+
+        navigate("/SignIn", { state: { replace: "true" } });
+
+        console.log("Success");
+
+        return response.json();
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError(err.response?.data?.message || "Signup failed");
+        setIsError(true);
+        setOpen(true);
+        console.log(err);
+      });
   };
 
   return (
-    <div className={styles.signupContainer}>
+    <div>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={error}
+      >
+        <Alert
+          onClose={handleClose}
+          severity={isError ? "error" : "success"}
+          sx={{ width: "100%" }}
+        >
+          {error}
+        </Alert>
+      </Snackbar>
+
+      <div className={styles.signupContainer}>
       <div className={styles.formSection}>
         <div className={styles.formContent}>
           <h2>Create Account</h2>
@@ -71,11 +150,10 @@ const SignUp = () => {
                   required
                   className={styles.select}
                 >
-                  <option value="">Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                  <option value="prefer-not-to-say">Prefer not to say</option>
+                  <option value="" hidden>Select Gender</option>
+                  <option value="MALE">MALE</option>
+                  <option value="FEMALE">FEMALE</option>
+                  <option value="OTHER">OTHER</option>
                 </select>
                 <label className={styles.selectLabel}>Gender</label>
               </div>
@@ -108,16 +186,32 @@ const SignUp = () => {
             </div>
             
             <div className={styles.inputGroup}>
-              <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                className={styles.input}
-                placeholder=" "
-              />
-              <label className={styles.label}>Password</label>
+              <div style={{ position: 'relative', width: '100%' }}>
+                <input
+                  type={fieldType}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  className={styles.input}
+                  placeholder="Password"
+                />
+                <label className={styles.label}>Password</label>
+                <span
+                  style={{
+                    position: "absolute",
+                    right: "10px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer",
+                    color: "#EFED34",
+                  }}
+                  onClick={toggleVisibility}
+                  className="material-symbols-outlined"
+                >
+                  {fieldType === "password" ? "visibility" : "visibility_off"}
+                </span>
+              </div>
             </div>
             
             <div className={styles.inputGroup}>
@@ -162,9 +256,25 @@ const SignUp = () => {
             </div>
             
             <button type="submit" className={styles.submitButton}>
+              {loading ? (
+                <span style={{ marginRight: "9px", marginTop: "5px" }}>
+                  <TailSpin width="20" height="12" />
+                </span>
+              ) : (
+                ""
+              )}
               Create Account
             </button>
           </form>
+
+          <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+            <p>
+              ALREADY A MEMBER?{" "}
+              <Link to="/SignIn" style={{ color: "#007bff", textDecoration: "underline" }}>
+                SIGN IN
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
       
@@ -176,6 +286,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
