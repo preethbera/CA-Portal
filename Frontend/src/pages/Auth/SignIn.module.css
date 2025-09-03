@@ -1,6 +1,6 @@
 .signinContainer {
   display: flex;
-  min-height: 600px;
+  min-height: 700px;
   background: transparent;
   width: 100%;
 }
@@ -75,6 +75,7 @@
   justify-content: center;
   padding: 3rem;
   background: rgba(255, 255, 255, 0.02);
+  min-height: 600px;
 }
 
 .formContent {
@@ -190,7 +191,7 @@
 @media (max-width: 768px) {
   .signinContainer {
     flex-direction: column;
-    min-height: auto;
+    min-height: 600px;
   }
   
   .imageSection {
@@ -207,6 +208,7 @@
   .formSection {
     padding: 2rem 1rem;
     order: 2;
+    min-height: 350px;
   }
   
   .formContent {
