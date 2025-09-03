@@ -195,20 +195,14 @@
   }
   
   .imageSection {
-    min-height: 250px;
-    padding: 1.5rem;
-    order: 1;
-  }
-  
-  .imagePlaceholder {
-    width: min(220px, 60vw);
-    height: min(220px, 60vw);
+    display: none;
   }
   
   .formSection {
     padding: 2rem 1rem;
-    order: 2;
-    min-height: 350px;
+    min-height: 400px;
+    width: 100%;
+    overflow-y: auto;
   }
   
   .formContent {
@@ -216,42 +210,37 @@
   }
   
   .formContent h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   
   .formContent p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
   
   .input {
-    padding: 14px 18px;
-    font-size: 0.95rem;
+    padding: 12px 16px;
+    font-size: 0.9rem;
   }
   
   .label {
-    font-size: 0.9rem;
-    left: 18px;
+    font-size: 0.85rem;
+    left: 16px;
   }
   
   .submitButton {
-    font-size: 1rem;
-    padding: 14px;
+    font-size: 0.95rem;
+    padding: 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .imageSection {
-    min-height: 200px;
-    padding: 1rem;
-  }
-  
-  .imagePlaceholder {
-    width: min(180px, 50vw);
-    height: min(180px, 50vw);
+  .signinContainer {
+    min-height: 400px;
   }
   
   .formSection {
     padding: 1.5rem 0.75rem;
+    min-height: 350px;
   }
   
   .formContent h2 {
@@ -270,5 +259,10 @@
   .label {
     font-size: 0.85rem;
     left: 16px;
+  }
+  
+  .submitButton {
+    font-size: 0.95rem;
+    padding: 12px;
   }
 }
