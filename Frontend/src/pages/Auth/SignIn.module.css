@@ -1,0 +1,182 @@
+.signinContainer {
+  display: flex;
+  min-height: 600px;
+  background: transparent;
+}
+
+.imageSection {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 49, 49, 0.1), rgba(218, 37, 32, 0.1));
+  position: relative;
+}
+
+.imagePlaceholder {
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(255, 49, 49, 0.3);
+  transition: all 0.3s ease;
+}
+
+.imagePlaceholder:hover {
+  transform: scale(1.05);
+  border-color: rgba(255, 49, 49, 0.5);
+}
+
+.placeholderContent {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+}
+
+.placeholderContent h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: rgb(255, 49, 49);
+  font-weight: 600;
+}
+
+.placeholderContent p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.formSection {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.formContent {
+  width: 100%;
+  max-width: 400px;
+}
+
+.formContent h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+.formContent p {
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input:focus {
+  border-color: rgb(255, 49, 49);
+  box-shadow: 0 0 0 3px rgba(255, 49, 49, 0.1);
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  transform: translateY(-24px) scale(0.8);
+  color: rgb(255, 49, 49);
+}
+
+.label {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0 8px;
+  border-radius: 4px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgb(255, 49, 49), rgb(218, 37, 32));
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 49, 49, 0.3);
+}
+
+.submitButton:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .signinContainer {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .imageSection {
+    min-height: 200px;
+  }
+  
+  .imagePlaceholder {
+    width: 200px;
+    height: 150px;
+  }
+  
+  .placeholderContent h3 {
+    font-size: 1.2rem;
+  }
+  
+  .placeholderContent p {
+    font-size: 0.9rem;
+  }
+  
+  .formSection {
+    padding: 2rem 1rem;
+  }
+  
+  .formContent h2 {
+    font-size: 1.5rem;
+  }
+}
