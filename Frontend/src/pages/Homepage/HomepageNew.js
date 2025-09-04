@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './HomepageNew.module.css'; // or './HomepageNew.module.scss' if using Option A
 import Navbar from '../../components/navbar/Navbarags';
-import About from '../About/aboutnew';
+// import About from '../About/aboutnew';
 import CarouselComponent from '../Carousel/car';
+import Carousel3DComponent from '../Carousel/carousel';
 import IncentivesNew from '../Incentives/incentive25';
 import Incentives26 from '../Incentives/Incentives26/Incentives26';
 import Contact from '../ContactUs/contact';
@@ -11,7 +12,7 @@ import Footer26 from '../../components/footer/Footer26';
 import Responsibility from '../Responsibility/ResponsibilityFuturistic';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import About from '../About/About26';
 import Faq from '../Faq/Faq';
 import Faq26 from '../Faq/Faq26';
 import CompanyIncentives from '../companyIncentives/CompanyIncentives';
@@ -151,7 +152,7 @@ function Home() {
         <div id="inc" className={styles.scroll}><Incentives26/></div>
         <div id="companyInc" className={styles.scroll}><CompanyIncentives /></div>
         {/* <div id="testimonials" className={styles.scroll}><CarouselComponent /></div> */}
-        <div id="testimonials" className={styles.scroll}><CarouselComponent /></div>
+        <div id="testimonials" className={styles.scroll}><Carousel3DComponent /></div>
         {/* <div id="faq"><Faq /></div> */}
         <div id="faq" className={`${styles.faq}`}><Faq26 /></div>
         <div id="contact" className={styles.scroll}><Contact /></div>
