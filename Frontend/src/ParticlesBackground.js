@@ -14,7 +14,7 @@ export default function ParticlesBackground() {
         position: "fixed",
         width: "100%",
         height: "100%",
-        backgroundColor: "#000000"   // black background
+        backgroundColor: "rgba(15, 10, 10, 1)"   // black background
       }}
     />
   );

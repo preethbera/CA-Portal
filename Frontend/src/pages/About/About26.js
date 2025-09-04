@@ -4,9 +4,10 @@ import styles from "./about26.module.css";
 function About() {
   // Store multiple images here
   const images = [
-    "https://i.postimg.cc/Y9yk6M7k/image.png",
     "https://i.postimg.cc/KcJ3WMGv/image.png",
+    "https://i.postimg.cc/Y9yk6M7k/image.png",
     "https://i.postimg.cc/XXSRLvzM/image.png",
+    "https://i.postimg.cc/WtL9hGjB/image.png",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
