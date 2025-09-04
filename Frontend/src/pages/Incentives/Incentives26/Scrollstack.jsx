@@ -15,7 +15,7 @@ const ScrollStack = ({
   stackPosition = '20%',
   scaleEndPosition = '10%',
   baseScale = 0.85,
-  triggerElement = null // New prop: selector string or DOM element reference
+  triggerElement = null
 }) => {
   const stackRef = useRef(null);
   const animationFrameRef = useRef(null);
@@ -38,16 +38,16 @@ const ScrollStack = ({
 
   const getTriggerElementOffset = useCallback(() => {
     if (!triggerElement) return 0;
-    
+
     let element;
     if (typeof triggerElement === 'string') {
       element = document.querySelector(triggerElement);
     } else if (triggerElement instanceof Element) {
       element = triggerElement;
     }
-    
+
     if (!element) return 0;
-    
+
     return element.offsetTop + element.offsetHeight;
   }, [triggerElement]);
 
@@ -71,13 +71,11 @@ const ScrollStack = ({
       if (!card) return;
 
       const cardTop = stackTop + card.offsetTop;
-      // Adjust trigger positions to be relative to the trigger element
       const triggerStart = cardTop - stackPositionPx - itemStackDistance * i - triggerOffset;
       const triggerEnd = cardTop - scaleEndPositionPx - triggerOffset;
       const pinStart = cardTop - stackPositionPx - itemStackDistance * i - triggerOffset;
       const pinEnd = stackEndPosition - triggerOffset;
 
-      // Adjust scrollTop to be relative to trigger element
       const adjustedScrollTop = scrollTop - triggerOffset;
 
       const scaleProgress = calculateProgress(adjustedScrollTop, triggerStart, triggerEnd);
@@ -132,6 +130,11 @@ const ScrollStack = ({
   }, [updateCardTransforms]);
 
   useLayoutEffect(() => {
+    // 🔹 Disable animation on mobile
+    if (window.innerWidth < 700) {
+      return;
+    }
+
     const timeoutId = setTimeout(() => {
       const cards = Array.from(stackRef.current.querySelectorAll('.scroll-stack-card'));
       cardsRef.current = cards;
@@ -160,13 +163,8 @@ const ScrollStack = ({
 
   return (
     <section className={`scroll-stack-section ${className}`.trim()} ref={stackRef}>
-      <div className="heading">
-        INCENTIVES
-      </div>
-      <div className="scroll-stack-inner">
-        {children}
-        {/* <div className="scroll-stack-spacer" /> */}
-      </div>
+      <div className="heading">INCENTIVES</div>
+      <div className="scroll-stack-inner">{children}</div>
     </section>
   );
 };

@@ -1,6 +1,10 @@
 .heading{
     font-size: 4rem;
-    color: #fff;
+    background: linear-gradient(120deg, rgb(255, 50, 50), #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Safari/Chrome */
+    background-clip: text; /* for Firefox (with support flag) */
+    color: transparent;
 }
 
 .container {
@@ -41,6 +45,9 @@
 
 .dots {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   bottom: 2rem; /* just above bottom */
   left: 50%;
   transform: translateX(-50%);
@@ -51,7 +58,7 @@
 .dot {
   width: 0.7rem;
   height: 0.7rem;
-  background-color: #e00000;
+  background-color: rgb(255, 49, 49);
   border-radius: 50%;
   display: inline-block;
   cursor: pointer;
@@ -59,7 +66,9 @@
 }
 
 .activeDot {
-  background-color: #930000;
+  background-color: rgb(157, 30, 25);
+  width: 1.1rem;
+  height: 1.1rem;
 }
 
 
@@ -97,10 +106,16 @@
 .numv{
     font-size: 4rem;
     font-weight: 900;
+    background: linear-gradient(120deg, rgb(255, 72, 72), #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Safari/Chrome */
+    background-clip: text; /* for Firefox (with support flag) */
+    color: transparent;
 }
 .numd{
     font-size: 1.5rem;
     font-weight: 600;
+    color: #c0c0c0;
 }
 @media only screen and (min-width: 1500px){
     .image {
@@ -151,7 +166,7 @@
     aspect-ratio: 16/10;
   }
   .para {
-    font-size: 1.2rem;
+    font-size: 1.7rem;
   }
 
   .heading {
@@ -166,11 +181,11 @@
 /* ✅ Small screens */
 @media only screen and (max-width: 500px) {
   .heading {
-    font-size: 2.6rem;
+    font-size: 3.2rem;
   }
 
   .para {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
 
   .image {
@@ -185,10 +200,10 @@
   }
 
   .numv {
-    font-size: 3rem;
+    font-size: 3.2rem;
   }
 
   .numd {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
 }

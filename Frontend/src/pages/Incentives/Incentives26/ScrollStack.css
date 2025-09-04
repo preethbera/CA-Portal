@@ -10,13 +10,10 @@
 }
 
 .scroll-stack-card {
-  position: relative;
-  transform-origin: top center;
-  will-change: transform;
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
+  ;
 }
 .heading{
   position: sticky;
@@ -35,6 +32,15 @@
     font-size: 3rem;
     top: 13.5rem;
     padding-bottom: 1rem;
+  }
+}
+
+@media (max-width: 666px){
+  .scroll-stack-card{
+    margin-bottom: 2rem ;
+  }
+  .heading{
+    position: static;
   }
 }
 
