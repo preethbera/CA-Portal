@@ -8,11 +8,10 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Home from './pages/Homepage/Homepage';
 
-
 import Home2 from './pages/Homepage/Homepage2'
 import HomeNew from './pages/Homepage/HomepageNew'
 import Homeags from './pages/Homepage/Homepageags';
-
+import Auth from './pages/Auth/Auth';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SignUp from './pages/SignIn_New/SignUp';
 import SignIn from './pages/SignIn_New/SignIn';
@@ -102,8 +101,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomeNew />} />
-          <Route path='/SignUp' element={<SignUp />} />
-          <Route path='/SignIn' element={<SignIn />} />
+          <Route path='/auth' element={<Auth />} />
+          <Route path='/SignUp' element={<Auth />} />
+          <Route path='/SignIn' element={<Auth />} />
           <Route path='/Profile' element={<ProfileEdit />} />
           <Route path='/ProfileSave' element={<ProfileSave />} />
           <Route path='/DashBoard' element={<DashBoard />} />
