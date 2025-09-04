@@ -2,13 +2,13 @@ import React from 'react';
 import styles from './Homepage.module.css';
 import About from '../About/about';
 import CarouselComponent from '../Carousel/car';
-import Navbar from '../../components/navbar/navbar';
+import Navbar from '../../components/navbar/Navbarags';
 import bg from "../../images/bg.png"
-import Incentives from '../Incentives/incentive';
+import Incentives from '../Incentives/incentive25';
 import Contact from '../ContactUs/contact';
 import Footer from '../../components/footer/footer';
 // import ButtonUnstyled from '@mui/base/ButtonUnstyled';
-import Responsibility from '../Responsibility/responsibility';
+import Responsibility from '../Responsibility/ResponsibilityFuturistic';
 import { Link } from 'react-router-dom';
 
 function Home() {
@@ -17,7 +17,7 @@ function Home() {
             <Navbar />
             <div className={styles.container}>
                 <div className={styles.bg1}> 
-                <div className={styles.bg2}> <img src={bg}/>
+                <div className={styles.bg2}> <img src={bg} alt="background"/>
                 </div>
                 <div className={styles.bg}> 
                 <h2 className ={styles.head2}> You are Registered Successfully </h2>
