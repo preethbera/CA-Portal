@@ -1,12 +1,20 @@
-.cov{
-    padding-top: 10vh;
+
+.heading{
+    position: relative;
+    font-size: 4rem;
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 700;
 }
 
 .main{
     display: flex;
-    justify-content: center; /* Changed from space-around to center */
+    justify-content: center;
+    align-items: center;
     padding: 2rem;
-    gap: 20rem; /* This will now work as expected */
+    gap: 10rem;
     padding-bottom: 20rem;
     flex-wrap: wrap;
 }

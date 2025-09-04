@@ -161,7 +161,7 @@ const ScrollStack = ({
   return (
     <section className={`scroll-stack-section ${className}`.trim()} ref={stackRef}>
       <div className="heading">
-        Incentives
+        INCENTIVES
       </div>
       <div className="scroll-stack-inner">
         {children}

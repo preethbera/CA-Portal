@@ -22,7 +22,7 @@ form *{
   z-index: 1;
 }
 
-h2 {
+/* h2 {
   color: #fff;
   text-align: left;
   text-shadow: 0px 0px 29.994037628173828px #000,
@@ -34,7 +34,7 @@ h2 {
   font-weight: 600;
   line-height: normal;
   margin-bottom: 2rem;
-}
+} */
 
 .form__formDiv {
   position: relative;
