@@ -52,7 +52,7 @@ const Card = ({img,title,subtitle,desc}) => {
         .card {
           position: relative;
           width: 100%;
-         
+          max-width: 400px;
           border-radius: 24px;
           background: linear-gradient(135deg, #0f0f0f, #0b0b0b);
           border: 1px solid rgba(255,0,0,0.3);
@@ -192,6 +192,97 @@ const Card = ({img,title,subtitle,desc}) => {
           font-size: 1.2rem;
           color: #d0c7c7ff;
           transition: color 0.3s ease-in-out;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+          .card-content {
+            padding: 1.5rem;
+          }
+          
+          .title {
+            font-size: 2.2rem;
+          }
+          
+          .subtitle {
+            font-size: 1.6rem;
+          }
+          
+          .desc {
+            font-size: 1rem;
+          }
+          
+          .icon-inner {
+            padding: 1rem;
+          }
+          
+          .glow-circle.big {
+            width: 120px; 
+            height: 120px;
+          }
+          
+          .glow-circle.small {
+            width: 60px; 
+            height: 60px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .card-content {
+            padding: 1.25rem;
+          }
+          
+          .title {
+            font-size: 1.8rem;
+          }
+          
+          .subtitle {
+            font-size: 1.3rem;
+          }
+          
+          .desc {
+            font-size: 0.9rem;
+          }
+          
+          .icon-inner {
+            padding: 0.8rem;
+          }
+          
+          .card {
+            border-radius: 16px;
+          }
+          
+          .glow-circle.big {
+            width: 100px; 
+            height: 100px;
+          }
+          
+          .glow-circle.small {
+            width: 50px; 
+            height: 50px;
+          }
+        }
+
+        @media (max-width: 360px) {
+          .card-content {
+            padding: 1rem;
+          }
+          
+          .title {
+            font-size: 1.5rem;
+          }
+          
+          .subtitle {
+            font-size: 1.1rem;
+          }
+          
+          .desc {
+            font-size: 0.85rem;
+          }
+          
+          .icon-inner {
+            padding: 0.6rem;
+          }
         }
         .card-container:hover .desc {
           color: #ddd;

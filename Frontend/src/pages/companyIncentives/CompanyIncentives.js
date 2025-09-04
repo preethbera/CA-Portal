@@ -29,12 +29,6 @@ function CompanyIncentives() {
           subtitle={"Cloud Solutions"}
           desc={"Optimize your cloud infrastructure with us."}
         />
-        <Card
-          img={stackedge}
-          title={"StackEdge"}
-          subtitle={"Cloud Solutions"}
-          desc={"Optimize your cloud infrastructure with us."}
-        />
       </div>
     </div>
   );
