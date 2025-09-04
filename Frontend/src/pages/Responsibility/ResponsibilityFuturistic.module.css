@@ -96,8 +96,8 @@
 /* Title */
 .title {
     text-align: center;
-    margin-bottom: 4rem;
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    /* margin-bottom: 4rem; */
+    font-size: 4rem;
     font-weight: 700;
     text-transform: uppercase;
     position: relative;
@@ -855,8 +855,8 @@
     }
     
     .title {
-        margin-bottom: 2rem;
-        font-size: clamp(2rem, 8vw, 3.5rem);
+        /* margin-bottom: 2rem; */
+        /* font-size: clamp(2rem, 8vw, 3.5rem); */
         letter-spacing: 0.1em;
     }
     
@@ -944,8 +944,8 @@
     }
     
     .title {
-        font-size: clamp(1.8rem, 10vw, 2.5rem);
-        margin-bottom: 1.5rem;
+        font-size: 3rem;
+        /* margin-bottom: 1.5rem; */
         letter-spacing: 0.05em;
     }
     
@@ -1075,9 +1075,9 @@
 
 /* Extra small screens */
 @media (max-width: 360px) {
-    .title {
+    /* .title {
         font-size: clamp(1.5rem, 12vw, 2rem);
-    }
+    } */
     
     .sphere {
         width: 100px;
@@ -1120,5 +1120,11 @@
     .cardImage {
         width: 50px;
         height: 50px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .title{
+        font-size: 3.5rem;
     }
 }
