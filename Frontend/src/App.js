@@ -8,7 +8,6 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Home from './pages/Homepage/Homepage';
 
-
 import Home2 from './pages/Homepage/Homepage2'
 import HomeNew from './pages/Homepage/HomepageNew'
 import Homeags from './pages/Homepage/Homepageags';
@@ -103,8 +102,8 @@ function App() {
         <Routes>
           <Route path='/' element={<HomeNew />} />
           <Route path='/auth' element={<Auth />} />
-          <Route path='/SignUp' element={<SignUp />} />
-          <Route path='/SignIn' element={<SignIn />} />
+          <Route path='/SignUp' element={<Auth />} />
+          <Route path='/SignIn' element={<Auth />} />
           <Route path='/Profile' element={<ProfileEdit />} />
           <Route path='/ProfileSave' element={<ProfileSave />} />
           <Route path='/DashBoard' element={<DashBoard />} />

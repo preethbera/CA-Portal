@@ -267,14 +267,14 @@ const SignUp = () => {
             </button>
           </form>
 
-          <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+          {/* <div style={{ textAlign: 'center', marginTop: '1rem' }}>
             <p>
               ALREADY A MEMBER?{" "}
               <Link to="/SignIn" style={{ color: "#007bff", textDecoration: "underline" }}>
                 SIGN IN
               </Link>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
       

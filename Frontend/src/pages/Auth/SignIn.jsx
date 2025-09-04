@@ -104,6 +104,10 @@ const SignIn = () => {
       });
   };
 
+  // const handleSignUpClick = () => {
+  //   // TODO: Add your function logic here
+  // };
+
   return (
     <div>
       {replace && !error ? (
@@ -186,7 +190,7 @@ const SignIn = () => {
                         top: "50%",
                         transform: "translateY(-50%)",
                         cursor: "pointer",
-                        color: "#EFED34",
+                        color: "#da1e1eff",
                       }}
                       onClick={toggleVisibility}
                       className="material-symbols-outlined"
@@ -217,16 +221,19 @@ const SignIn = () => {
                 <span>{forget ? "Reset Password" : "Sign In"}</span>
               </button>
 
-              {!forget && (
+              {/* {!forget && (
                 <div style={{ textAlign: 'center', marginTop: '1rem' }}>
                   <p>
                     NEW HERE?{" "}
-                    <Link to="/SignUp" style={{ color: "#007bff", textDecoration: "underline" }}>
+                    <span 
+                      onClick={handleSignUpClick}
+                      style={{ color: "#007bff", textDecoration: "underline", cursor: "pointer" }}
+                    >
                       SIGN UP
-                    </Link>
+                    </span>
                   </p>
                 </div>
-              )}
+              )} */}
             </form>
           </div>
         </div>
