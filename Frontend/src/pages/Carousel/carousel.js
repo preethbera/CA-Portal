@@ -6,214 +6,65 @@ import styles from "./car.module.css";
 
 function Carousel3DComponent() {
   const [autoplay, setAutoplay] = useState(true);
-  const handleClick = (e) => {
-    let video = e.currentTarget.parentElement.firstChild;
-    if (video.paused) {
-      video.play();
-      setAutoplay(false);
-      e.currentTarget.children[0].style.display = "none";
-      e.currentTarget.children[1].style.display = "flex";
-    } else {
-      setAutoplay(true);
-      video.pause();
-      e.currentTarget.children[1].style.display = "none";
-      e.currentTarget.children[0].style.display = "flex";
+
+  const testimonials = [
+    {
+      text: "Being a Campus Ambassador has been a truly enriching experience it helped me enhance my leadership and communication skills, connect with inspiring peers, and gain exposure to exciting opportunities. I'm grateful for this platform and I believe this program will continue to provide amazing opportunities for many more students in the future, just as it has for me.",
+      name: "Kartik Rawat",
+      college: "Y.B Patil Polytechnic Akurdi",
+      location: "Pune, Maharashtra"
+    },
+    {
+      text: "Serving as a two-time Campus Ambassador for Team Kshitij and IIT Kharagpur has been a truly transformative experience, and being recognized among the Top 50 Campus Ambassadors across India has been the highlight of this journey. This program is more than just a title or name but it's a hands-on learning experience that goes beyond the classroom.",
+      name: "Sarvesh Soumil",
+      college: "Swami Vivekananda University",
+      location: "Kolkata, West Bengal"
+    },
+    {
+      text: "The Campus Ambassador journey with Kshitij, IIT Kharagpur, allowed me to connect with like-minded peers, build leadership qualities, and promote innovation-driven initiatives. It was a proud moment to be recognized among the Top 10 CAs. Thank you entire Kshitij Team.",
+      name: "Kishan Bhandari",
+      college: "Haldia Institute of Technology",
+      location: "Haldia, West Bengal"
+    },
+    {
+      text: "Thanks for the recognition. As a CA for the last two years it has been a great experience enhancing my leadership skills as well as event management skills. All the events were great and the nights of Kshitij were memorable. Overall it was a great experience...",
+      name: "Ashwini Kumar Khatua",
+      college: "GITA Autonomous College",
+      location: "Bhubaneswar, Odisha"
+    },
+    {
+      text: "Being a Campus Ambassador has been an immensely gratifying journey. I cherished engaging with peers, cultivating new skills, and immersing myself in a vibrant community. The program profoundly enhanced my confidence, broadened my perspective, and fostered invaluable connections.",
+      name: "Vibhak Pratap Singh",
+      college: "Srinix College of Engineering",
+      location: "Balasore, Odisha"
+    },
+    {
+      text: "Being selected among the top 50 Campus Ambassadors is a proud achievement for me. This recognition has boosted my confidence and inspired me to contribute more actively to our campus. The journey has enriched my leadership and communication skills.",
+      name: "Satya Ranjan Mohanty",
+      college: "Srinix College of Engineering",
+      location: "Balasore, Odisha"
     }
-  };
-  const items = [
-    <div className={styles.videocontainer}>
-      <video
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        poster=""
-      >
-        <source src="/video1.mp4" type="video/mp4" />
-      </video>
-      <button onClick={handleClick} className={styles.videoBtn}>
-        <svg
-          className={styles.videoBtnPlay}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          fill="none"
-        >
-          <path
-            d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z"
-            stroke="#ff3131"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <svg
-          className={styles.videoBtnPause}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          fill="none"
-        >
-          <path
-            d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z"
-            stroke="#ff3131"
-            strokeWidth="1.5"
-          />
-          <path
-            d="M14 7C14 5.58579 14 4.87868 14.4393 4.43934C14.8787 4 15.5858 4 17 4C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V17C20 18.4142 20 19.1213 19.5607 19.5607C19.1213 20 18.4142 20 17 20C15.5858 20 14.8787 20 14.4393 19.5607C14 19.1213 14 18.4142 14 17V7Z"
-            stroke="#ff3131"
-            strokeWidth="1.5"
-          />
-        </svg>
-      </button>
-      <div className={styles.videoDesc}>
-        <p>Preeth</p>
-        <p>VIT Bhopal</p>
-      </div>
-    </div>,
-    <div className={styles.videocontainer}>
-      <video
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        poster=""
-      >
-        <source src="/video1.mp4" type="video/mp4" />
-      </video>
-      <button onClick={handleClick} className={styles.videoBtn}>
-        <svg
-          className={styles.videoBtnPlay}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          fill="none"
-        >
-          <path
-            d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z"
-            stroke="#ff3131"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <svg
-          className={styles.videoBtnPause}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          fill="none"
-        >
-          <path
-            d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z"
-            stroke="#ff3131"
-            strokeWidth="1.5"
-          />
-          <path
-            d="M14 7C14 5.58579 14 4.87868 14.4393 4.43934C14.8787 4 15.5858 4 17 4C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V17C20 18.4142 20 19.1213 19.5607 19.5607C19.1213 20 18.4142 20 17 20C15.5858 20 14.8787 20 14.4393 19.5607C14 19.1213 14 18.4142 14 17V7Z"
-            stroke="#ff3131"
-            strokeWidth="1.5"
-          />
-        </svg>
-      </button>
-      <div className={styles.videoDesc}>
-        <p>Akshat </p>
-        <p>VIT Bhopal</p>
-      </div>
-    </div>,
-    <div className={styles.videocontainer}>
-      <video
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        poster=""
-      >
-        <source src="/video1.mp4" type="video/mp4" />
-      </video>
-      <button onClick={handleClick} className={styles.videoBtn}>
-        <svg
-          className={styles.videoBtnPlay}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          fill="none"
-        >
-          <path
-            d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z"
-            stroke="#ff3131"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <svg
-          className={styles.videoBtnPause}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          fill="none"
-        >
-          <path
-            d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z"
-            stroke="#ff3131"
-            strokeWidth="1.5"
-          />
-          <path
-            d="M14 7C14 5.58579 14 4.87868 14.4393 4.43934C14.8787 4 15.5858 4 17 4C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V17C20 18.4142 20 19.1213 19.5607 19.5607C19.1213 20 18.4142 20 17 20C15.5858 20 14.8787 20 14.4393 19.5607C14 19.1213 14 18.4142 14 17V7Z"
-            stroke="#ff3131"
-            strokeWidth="1.5"
-          />
-        </svg>
-      </button>
-      <div className={styles.videoDesc}>
-        <p>Vikash Chaudhari</p>
-        <p>VIT Bhopal</p>
-      </div>
-    </div>,
-    <div className={styles.videocontainer}>
-      <video
-        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        poster=""
-      >
-        <source src="/video1.mp4" type="video/mp4" />
-      </video>
-      <button onClick={handleClick} className={styles.videoBtn}>
-        <svg
-          className={styles.videoBtnPlay}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          fill="none"
-        >
-          <path
-            d="M18.8906 12.846C18.5371 14.189 16.8667 15.138 13.5257 17.0361C10.296 18.8709 8.6812 19.7884 7.37983 19.4196C6.8418 19.2671 6.35159 18.9776 5.95624 18.5787C5 17.6139 5 15.7426 5 12C5 8.2574 5 6.3861 5.95624 5.42132C6.35159 5.02245 6.8418 4.73288 7.37983 4.58042C8.6812 4.21165 10.296 5.12907 13.5257 6.96393C16.8667 8.86197 18.5371 9.811 18.8906 11.154C19.0365 11.7084 19.0365 12.2916 18.8906 12.846Z"
-            stroke="#ff3131"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <svg
-          className={styles.videoBtnPause}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          fill="none"
-        >
-          <path
-            d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z"
-            stroke="#ff3131"
-            strokeWidth="1.5"
-          />
-          <path
-            d="M14 7C14 5.58579 14 4.87868 14.4393 4.43934C14.8787 4 15.5858 4 17 4C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V17C20 18.4142 20 19.1213 19.5607 19.5607C19.1213 20 18.4142 20 17 20C15.5858 20 14.8787 20 14.4393 19.5607C14 19.1213 14 18.4142 14 17V7Z"
-            stroke="#ff3131"
-            strokeWidth="1.5"
-          />
-        </svg>
-      </button>
-      <div className={styles.videoDesc}>
-        <p>Neel Kotkar</p>
-        <p>VIT Bhopal</p>
-      </div>
-    </div>,
   ];
+
+  const items = testimonials.map((testimonial, index) => (
+    <div key={index} className={styles.testimonialContainer}>
+      <div className={styles.testimonialContent}>
+        <div className={styles.quoteIcon}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ff3131" width="30" height="30">
+            <path d="M6.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.318.142-.686.238-1.028.466-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.945-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006A4.5 4.5 0 1 0 6.5 10zm11 0c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.318.142-.686.238-1.028.466-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.945-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006A4.5 4.5 0 1 0 17.5 10z"/>
+          </svg>
+        </div>
+        <div className={styles.testimonialText}>
+          <p>{testimonial.text}</p>
+        </div>
+        <div className={styles.testimonialAuthor}>
+          <div className={styles.authorName}>CA - {testimonial.name}</div>
+          <div className={styles.authorCollege}>{testimonial.college}</div>
+          <div className={styles.authorLocation}>{testimonial.location}</div>
+        </div>
+      </div>
+    </div>
+  ));
   return (
     <div className={styles.carouselContainer}>
       <h2 className={styles.heading}>TESTIMONIALS</h2>
