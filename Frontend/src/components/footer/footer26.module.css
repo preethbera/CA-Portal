@@ -116,10 +116,11 @@
 .footdown {
   position: absolute;
   bottom: 2rem;
-  left: 10%;
-  right: 3rem;
+  left: 3rem;          /* shifted to left */
+  right: auto;         /* remove right alignment */
   display: flex;
   flex-direction: column;
+  align-items: flex-start; /* align left */
   gap: 1rem;
   z-index: 5;
   background: none;
@@ -132,22 +133,34 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  padding: .5rem;
+  padding: 1rem 1.5rem;  
   display: flex;
-  width: 40%;
-  height: 5rem;
   align-items: center;
-  justify-content: center;
-  gap: 7%;
-  transition: all 0.3s ease;
+  align-content: center;
+  justify-content: flex-start;
+  gap: 1.2rem;            /* reduced gap */
+  min-width: 60rem;       /* keeps them neat */
   cursor: pointer;
-  margin: 0 0 0.5rem 0;
+  transition: all 0.3s ease;
 }
+
 .social:hover,
 .copy:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 49, 49, 0.8);
   transform: translateX(5px);
+}
+
+.social ul li a .ii {
+  font-size: 1.4rem;      /* smaller icons */
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+/* Hover effects on icons */
+.social ul li a .ii:hover {
+  color: rgb(255, 49, 49);  /* red hover */
+  transform: scale(1.2);    /* pop effect */
 }
 
 .copy::before {
@@ -167,11 +180,11 @@
 .copy span {
   display: flex;
   flex-direction: row;
-  gap: 13%;
+  gap: 10%;
   list-style: none;
   align-items: center;
-  justify-content: center;
-  padding: 0;
+  justify-content: space-around;
+  padding: 0.1rem 0.5rem;
   margin: 0;
   flex: 1;
 }
@@ -286,6 +299,11 @@
   .copy {
     padding:  1rem;
     width: 47%;
+    min-width: 30rem;
+  }
+
+  .social ul,.copy{
+    padding: 0.5rem;
   }
   
   .footabout,

@@ -223,11 +223,14 @@
 }
 
 .circle img {
-  height: 15rem;
-  width: 15rem;
-  border-radius: 30rem;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;   /* prevents distortion */
+  object-position: center; /* keeps focus in the middle */
   transition: all 0.3s ease;
 }
+
 
 .card:hover .circle {
   transform: scale(1.05);
