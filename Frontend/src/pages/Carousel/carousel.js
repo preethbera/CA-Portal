@@ -1,12 +1,18 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Carousel } from "react-responsive-3d-carousel";
 import "react-responsive-3d-carousel/dist/styles.css";
 import styles from "./car.module.css";
 
 function Carousel3DComponent() {
   const [autoplay, setAutoplay] = useState(true);
+  const [numOfSlides, setNumOfSlides] = useState("3");
+  const [isTiny, setIsTiny] = useState(false); // small-screen fallback flag
+  const [tinyIndex, setTinyIndex] = useState(0);
+  const touchStartX = useRef(null);
+  const touchDeltaX = useRef(0);
 
+  // Moved testimonials above effects to avoid temporal dead zone access
   const testimonials = [
     {
       text: "Being a Campus Ambassador has been a truly enriching experience it helped me enhance my leadership and communication skills, connect with inspiring peers, and gain exposure to exciting opportunities. I'm grateful for this platform and I believe this program will continue to provide amazing opportunities for many more students in the future, just as it has for me.",
@@ -46,8 +52,72 @@ function Carousel3DComponent() {
     }
   ];
 
+  // Responsive carousel settings
+  React.useEffect(() => {
+    const handleResize = () => {
+      const w = window.innerWidth;
+      // Use a slightly higher threshold (420) to catch devices reporting fractional widths
+      if (w <= 420) {
+        setIsTiny(true);
+        setNumOfSlides("1");
+      } else {
+        setIsTiny(false);
+        if (w <= 768) setNumOfSlides("1");
+        else if (w <= 1024) setNumOfSlides("2");
+        else setNumOfSlides("3");
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Autoplay for tiny mode
+  React.useEffect(() => {
+    if (!isTiny) return;
+    const id = setInterval(() => {
+      setTinyIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [isTiny]);
+
+  // Touch / swipe handlers for tiny fallback
+  const onTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchDeltaX.current = 0;
+  };
+  const onTouchMove = (e) => {
+    if (touchStartX.current == null) return;
+    touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
+  };
+  const onTouchEnd = () => {
+    if (touchStartX.current == null) return;
+    const threshold = 40; // px
+    if (touchDeltaX.current > threshold) {
+      handlePrevTiny();
+    } else if (touchDeltaX.current < -threshold) {
+      handleNextTiny();
+    }
+    touchStartX.current = null;
+    touchDeltaX.current = 0;
+  };
+
+  const handlePrevTiny = () => {
+    setTinyIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+  const handleNextTiny = () => {
+    setTinyIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+
   const items = testimonials.map((testimonial, index) => (
-    <div key={index} className={styles.testimonialContainer}>
+    <div
+      key={index}
+      className={styles.testimonialContainer}
+      role="group"
+      aria-roledescription="slide"
+      aria-label={`Testimonial ${index + 1} of ${testimonials.length}`}
+    >
       <div className={styles.testimonialContent}>
         <div className={styles.quoteIcon}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ff3131" width="30" height="30">
@@ -68,29 +138,83 @@ function Carousel3DComponent() {
   return (
     <div className={styles.carouselContainer}>
       <h2 className={styles.heading}>TESTIMONIALS</h2>
-      <div className={styles.carousel3dcompCont}>
-        <Carousel
-          showStatus={false}
-          containerWidth="100%"
-          perspectiveOrigin="center"
-          defaultOption={{ numOfSlides: "3", depthFactor: 1 }}
-          pauseOnHover={true}
-          items={items}
-          startIndex={0}
-          // onChange={(currentIndex) => console.log(currentIndex)}
-          swipeable={true}
-          swipeDirection="horizontal"
-          autoPlay={autoplay}
-          showArrows={true}
-          arrows={{ color: "#ff3131", hoverColor: "#cc2929" }}
-          indicators={{
-            width: "0.7rem",
-            height: "0.7rem",
-            color: "#ffffff",
-            activeColor: "#ff3131",
+      {isTiny ? (
+        <div
+          className={styles.tinyCarouselWrapper}
+          tabIndex={0}
+          aria-roledescription="carousel"
+          aria-label="Testimonials carousel"
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowLeft') handlePrevTiny();
+            if (e.key === 'ArrowRight') handleNextTiny();
           }}
-        />
-      </div>
+        >
+          <div className={styles.tinySlideOuter}>
+            <button
+              aria-label="Previous testimonial"
+              className={`${styles.tinySideArrow} ${styles.tinySideArrowLeft}`}
+              type="button"
+              onClick={handlePrevTiny}
+            >
+              <span>&lt;</span>
+            </button>
+            <div
+              className={styles.tinySlideTrack}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
+              {items[tinyIndex]}
+            </div>
+            <button
+              aria-label="Next testimonial"
+              className={`${styles.tinySideArrow} ${styles.tinySideArrowRight}`}
+              type="button"
+              onClick={handleNextTiny}
+            >
+              <span>&gt;</span>
+            </button>
+          </div>
+          <div className={styles.tinyDots} role="tablist">
+            {testimonials.map((_, i) => (
+              <span
+                key={i}
+                className={i === tinyIndex ? styles.tinyDotActive : styles.tinyDot}
+                onClick={() => setTinyIndex(i)}
+                aria-label={`Go to testimonial ${i + 1}`}
+                role="tab"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') setTinyIndex(i);
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className={styles.carousel3dcompCont}>
+          <Carousel
+            showStatus={false}
+            containerWidth="100%"
+            perspectiveOrigin="center"
+            defaultOption={{ numOfSlides: numOfSlides, depthFactor: 0.8 }}
+            pauseOnHover={true}
+            items={items}
+            startIndex={0}
+            swipeable={true}
+            swipeDirection="horizontal"
+            autoPlay={autoplay}
+            showArrows={true}
+            arrows={{ color: "#ff3131", hoverColor: "#cc2929" }}
+            indicators={{
+              width: "0.7rem",
+              height: "0.7rem",
+              color: "#ffffff",
+              activeColor: "#ff3131",
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }
