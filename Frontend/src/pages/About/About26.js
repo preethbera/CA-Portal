@@ -82,7 +82,7 @@ function About() {
           colleges will be under their management. The Campus Ambassador Program
           is structured to help Campus Ambassadors develop their corporate
           personalities and soft skills. The Campus Ambassadors' involvement
-          will be essential to the success of Kshitij 2025, the 22nd edition of
+          will be essential to the success of Kshitij 2026, the 23rd edition of
           Kshitij.
         </p>
         <div className={styles.num_container}>
