@@ -175,8 +175,8 @@ const Card = ({img,title,subtitle,desc}) => {
         }
 
         .title {
-          font-size: 3rem;
-          font-weight: bold;
+          font-size: 2rem; /* reduced from 3rem */
+          font-weight: 700;
           background: linear-gradient(to right, #ff5555, #ff2222, #ff5555);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -184,7 +184,7 @@ const Card = ({img,title,subtitle,desc}) => {
         }
 
         .subtitle {
-          font-size: 2rem;
+          font-size: 1.5rem;
           font-weight: 600;
           margin-bottom: 0.5rem;
         }
@@ -201,11 +201,11 @@ const Card = ({img,title,subtitle,desc}) => {
           }
           
           .title {
-            font-size: 2.2rem;
+            font-size: 1.6rem;
           }
           
           .subtitle {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
           }
           
           .desc {
@@ -233,11 +233,11 @@ const Card = ({img,title,subtitle,desc}) => {
           }
           
           .title {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
           }
           
           .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
           }
           
           .desc {
@@ -269,7 +269,7 @@ const Card = ({img,title,subtitle,desc}) => {
           }
           
           .title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
           }
           
           .subtitle {

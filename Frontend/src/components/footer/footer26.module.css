@@ -33,6 +33,8 @@
   bottom: 0;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(255, 49, 49, 0.05) 50%, rgba(218, 37, 32, 0.1) 100%);
   z-index: 1;
+  /* Allow clicks/hover to pass through this decorative overlay */
+  pointer-events: none;
 }
 
 /* CONTACT background text with red tint */
@@ -132,7 +134,7 @@
   flex-direction: column;
   align-items: flex-start; /* align left */
   gap: 1rem;
-  z-index: 5;
+  z-index: 30; /* bring above overlay and decorative elements */
   background: none;
   padding: 0;
 }
@@ -149,7 +151,10 @@
   align-content: center;
   justify-content: flex-start;
   gap: 1.2rem;            /* reduced gap */
-  min-width: 60rem;       /* keeps them neat */
+  /* keep both cards the same width but allow them to shrink on small screens */
+  width: min(60rem, 95%);
+  box-sizing: border-box;
+  z-index: 20; /* keep social blocks above decorative layers */
   transition: all 0.3s ease;
 }
 
@@ -168,7 +173,7 @@
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
-  z-index: 999;
+  z-index: 30; /* ensure link sits above nearby decorative elements */
   background: transparent;
   text-decoration: none;
   color: inherit;
@@ -194,7 +199,7 @@
 
 .social ul li {
   color: rgb(255, 255, 255);
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 800;
   margin: 0 0 0.3rem 0;
   position: relative;
@@ -218,10 +223,13 @@
   transition: all 0.3s ease;
   pointer-events: auto;
   cursor: pointer;
+  z-index: 35;
 }
 
+.social::after { right: 1.25rem; }
+
 /* Hover effects on icons */
-.social ul li a .ii:hover {
+.social ul li a:hover .ii {
   color: rgb(255, 49, 49);  /* red hover */
   transform: scale(1.2);    /* pop effect */
 }
@@ -254,9 +262,10 @@
 
 .copy h3 {
   color: rgb(255, 255, 255);
-  font-size: 1.8rem;
-  font-weight: 800;
-  margin: 0 0 0.3rem 0;
+  font-size: 1.2rem; /* reduced for better balance */
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
 }
 
 /* Arrow for contact cards */
