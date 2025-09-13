@@ -31,7 +31,7 @@ function CompanyIncentives() {
         />
         <Card
           img={"https://i.ibb.co/4nTRkhWc/Screenshot-2025-09-12-at-12-13-29-AM.png"}
-          title={"Triple Solutions"}
+          title={"Triple One Solutions"}
           subtitle={"E-Learning Platform"}
           desc={"Campus Ambassadors will get upto 100% discounts on their mentorship programs based on their performance"}
         />

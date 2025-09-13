@@ -142,7 +142,7 @@ const SignUp = () => {
             </div>
             
             <div className={styles.row}>
-              <div className={styles.inputGroup}>
+              <div className={`${styles.inputGroup} ${formData.gender ? styles.filled : ""}`}>
                 <select
                   name="gender"
                   value={formData.gender}
@@ -150,7 +150,7 @@ const SignUp = () => {
                   required
                   className={styles.select}
                 >
-                  <option value="" hidden>Select Gender</option>
+                  <option value="" hidden disabled></option>
                   <option value="MALE">MALE</option>
                   <option value="FEMALE">FEMALE</option>
                   <option value="OTHER">OTHER</option>
@@ -194,7 +194,8 @@ const SignUp = () => {
                   onChange={handleChange}
                   required
                   className={styles.input}
-                  placeholder="Password"
+                  placeholder=" "
+                  autoComplete="new-password"
                 />
                 <label className={styles.label}>Password</label>
                 <span

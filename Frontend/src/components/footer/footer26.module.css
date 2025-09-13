@@ -13,6 +13,16 @@
   overflow: hidden;
 }
 
+/* Ensure all interactive elements are clickable */
+.mainfoot * {
+  pointer-events: auto;
+}
+
+.mainfoot a {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
 /* Background gradient overlay with red colors */
 .mainfoot::before {
   content: '';
@@ -140,7 +150,6 @@
   justify-content: flex-start;
   gap: 1.2rem;            /* reduced gap */
   min-width: 60rem;       /* keeps them neat */
-  cursor: pointer;
   transition: all 0.3s ease;
 }
 
@@ -151,10 +160,64 @@
   transform: translateX(5px);
 }
 
+/* Social Links Styling */
+.socialLink {
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 999;
+  background: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+.socialLink:hover {
+  background: rgba(255, 49, 49, 0.1);
+  transform: scale(1.1);
+}
+
+.social ul {
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+  list-style: none;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.1rem 0.5rem;
+  margin: 0;
+  flex: 1;
+  pointer-events: auto;
+}
+
+.social ul li {
+  color: rgb(255, 255, 255);
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0 0 0.3rem 0;
+  position: relative;
+  z-index: 999;
+  pointer-events: auto;
+}
+
+.social ul li a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  z-index: 999;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
 .social ul li a .ii {
   font-size: 1.4rem;      /* smaller icons */
   color: rgba(255, 255, 255, 0.8);
   transition: all 0.3s ease;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 /* Hover effects on icons */
@@ -189,7 +252,6 @@
   flex: 1;
 }
 
-.social ul li,
 .copy h3 {
   color: rgb(255, 255, 255);
   font-size: 1.8rem;
@@ -295,15 +357,26 @@
   .content p {
     font-size: 1.5rem;
   }
-   .social,
+  
+  .social,
   .copy {
-    padding:  1rem;
+    padding: 1rem;
     width: 47%;
     min-width: 30rem;
   }
 
-  .social ul,.copy{
+  .social ul,
+  .copy {
     padding: 0.5rem;
+  }
+  
+  .socialLink {
+    padding: 1rem;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .footabout,
@@ -342,16 +415,26 @@
   .content {
     font-size: 2.5rem;
   }
-   .social,
+  
+  .social,
   .copy {
     background: rgba(255, 255, 255, 0.05);
     width: 75%;
   }
   
+  .socialLink {
+    padding: 1.2rem;
+    min-height: 48px;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
   .footdown {
     position: relative;
     bottom: auto;
-align-items: center;
+    align-items: center;
     margin-top: 2rem;
   }
 
@@ -387,8 +470,17 @@ align-items: center;
   
   .social,
   .copy {
-    padding: .25rem;
+    padding: 0.25rem;
     width: 95%;
+  }
+  
+  .socialLink {
+    padding: 1.5rem;
+    min-height: 52px;
+    min-width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .forms input,
@@ -400,7 +492,6 @@ align-items: center;
     left: 0;
     right: 0;
   }
-
 }
 
 

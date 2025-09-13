@@ -165,7 +165,8 @@ const SignIn = () => {
                   onChange={forget ? (e) => setFemail(e.target.value) : handleChange}
                   required
                   className={styles.input}
-                  placeholder="Enter your Email"
+                  placeholder=" "
+                  autoComplete="email"
                 />
                 <label className={styles.label}>Email Address</label>
               </div>
@@ -180,7 +181,8 @@ const SignIn = () => {
                       onChange={handleChange}
                       required
                       className={styles.input}
-                      placeholder="Enter your Password"
+                      placeholder=" "
+                      autoComplete="current-password"
                     />
                     <label className={styles.label}>Password</label>
                     <span
