@@ -65,20 +65,16 @@ const SignUp = () => {
 
     Api.post(`/signup`, data)
       .then((response) => {
-        if (response.status !== 200) {
-          throw new Error(response.statusText);
-        }
-
+        // Axios only reaches here for 2xx responses; treat as success
         setLoading(false);
         setOpen(true);
         setIsError(false);
         setError("Signup Successful");
 
-        navigate("/SignIn", { state: { replace: "true" } });
+        // Pass a boolean flag so SignIn can show a success snackbar
+        navigate("/SignIn", { state: { replace: true } });
 
-        console.log("Success");
-
-        return response.json();
+        console.log("Signup success", response.data);
       })
       .catch((err) => {
         setLoading(false);

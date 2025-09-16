@@ -47,10 +47,6 @@ const SignIn = () => {
 
     Api.post(`/signin/`, user)
       .then((response) => {
-        if (response.status !== 200) {
-          throw new Error(response.statusText);
-        }
-
         setError(false);
         setLoading(false);
 
@@ -64,9 +60,9 @@ const SignIn = () => {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err.response.data);
+        console.log(err?.response?.data);
         setLoading(false);
-        setError(err.response.data?.message || err.response.data || "Login failed");
+        setError(err?.response?.data?.message || err?.response?.data || "Login failed");
         setOpen(true);
       });
   };
@@ -79,10 +75,6 @@ const SignIn = () => {
 
     Api.post(`/user/updatePassword/`, user)
       .then((response) => {
-        if (response.status !== 200) {
-          throw new Error(response.status);
-        }
-
         setError(false);
         setLoading(false);
 
@@ -96,7 +88,7 @@ const SignIn = () => {
         console.log(err?.response?.data?.message);
         console.log(err?.response?.status);
         setError("could not reset password");
-        if (err.response.status == 401) setText("No Account Found. Try Again");
+        if (err?.response?.status == 401) setText("No Account Found. Try Again");
         else setText("Server busy. Click again after 5 minutes");
         setOpen(true);
         setLoading(false);
