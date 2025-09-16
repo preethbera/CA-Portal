@@ -1,31 +1,48 @@
 /* DESIGN A RESPONSIVE GRID OF 4 ELEMENTS */
 .companyIncentivesGrid {
-  margin-top: 4rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  width: 90%;
+  margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* space-around to give breathing room */
+  gap: 2rem; /* gap between rows and columns */
+  max-width: min(1200px, 100%);
   margin-left: auto;
   margin-right: auto;
-  row-gap: 2rem;
-  column-gap: 2rem;
-  padding: 1rem;
+  padding-inline: 2rem;
+  padding-top: 1rem;
+  box-sizing: border-box;
+}
+
+/* wrapper for each card so flex sizing is controlled */
+.cardWrapper {
+  flex: 0 1 calc(33.333% - 2rem); /* up to 3 per row, account for gap */
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 260px; /* prevents cards from getting too narrow */
+  max-width: 380px; /* limit card width for visual balance */
 }
 
 .heading {
-  margin-top: 18rem;
+  margin-top: 6rem;
   position: relative;
   font-weight: 700;
-  font-size: 4rem;
+  font-size: 3.2rem;
   text-align: center;
   color: #ffffff;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Desktop and large tablets */
-@media (max-width: 1200px) {
+/* large tablets / small desktops: 2 columns */
+@media (max-width: 1100px) {
   .companyIncentivesGrid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    width: 95%;
+    justify-content: center;
+    padding-inline: 1.5rem;
+  }
+  .cardWrapper {
+    flex: 0 1 calc(50% - 1.5rem);
+    max-width: 460px;
   }
 }
 
@@ -38,11 +55,12 @@
 /* Medium tablets */
 @media (max-width: 768px) {
   .companyIncentivesGrid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    width: 95%;
-    column-gap: 1.5rem;
-    row-gap: 1.5rem;
-    padding: 0.5rem;
+    justify-content: center;
+    padding-inline: 1rem;
+  }
+  .cardWrapper {
+    flex: 0 1 calc(50% - 1rem);
+    max-width: 420px;
   }
   
   .heading {
@@ -55,17 +73,18 @@
 /* Mobile devices */
 @media (max-width: 480px) {
   .companyIncentivesGrid {
-    grid-template-columns: 1fr;
-    width: 95%;
-    column-gap: 1rem;
-    row-gap: 1rem;
-    padding: 0.5rem;
+    justify-content: center;
+    padding-inline: 0.75rem;
+  }
+  .cardWrapper {
+    flex: 0 1 100%;
+    max-width: 560px;
   }
   
   .heading {
-    font-size: 2.5rem;
-    margin-top: 8rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 0.75rem;
   }
 }
 

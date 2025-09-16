@@ -1,6 +1,6 @@
  import React from "react";
 
-const Card = ({img,title,subtitle,desc}) => {
+const Card = ({img,title,subtitle,desc, link}) => {
   return (
     <>
       <div className="card-container">
@@ -29,6 +29,19 @@ const Card = ({img,title,subtitle,desc}) => {
             <p className="subtitle">{subtitle}</p>
             <p className="desc">{desc}</p>
 
+            {/* Optional link button - only render when link prop is provided */}
+            {link && (
+              <div style={{ marginTop: '1rem' }}>
+                <a href={link} target="_blank" rel="noopener noreferrer" className="card-link" aria-label={`Open ${title}`}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="link-icon">
+                    <path d="M14 3h7v7" stroke="#ff6b6b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M10 14L21 3" stroke="#ff6b6b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M21 21H3V3" stroke="#ff6b6b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            )}
+
             <div className="divider"></div>
 
             <div className="dots">
@@ -52,13 +65,13 @@ const Card = ({img,title,subtitle,desc}) => {
         .card {
           position: relative;
           width: 100%;
-          max-width: 400px;
-          border-radius: 24px;
+          max-width: 420px;
+          border-radius: 20px;
           background: linear-gradient(135deg, #0f0f0f, #0b0b0b);
-          border: 1px solid rgba(255,0,0,0.3);
-          box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+          border: 1px solid rgba(255,0,0,0.18);
+          box-shadow: 0 10px 36px rgba(0,0,0,0.55);
           overflow: hidden;
-          transition: all 0.7s ease-in-out;
+          transition: all 0.6s ease-in-out;
         }
 
         .card-container:hover .card {
@@ -175,12 +188,12 @@ const Card = ({img,title,subtitle,desc}) => {
         }
 
         .title {
-          font-size: 2rem; /* reduced from 3rem */
+          font-size: 1.8rem;
           font-weight: 700;
-          background: linear-gradient(to right, #ff5555, #ff2222, #ff5555);
+          background: linear-gradient(to right, #ff6b6b, #ff3b3b, #ff6b6b);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.35rem;
         }
 
         .subtitle {
@@ -334,6 +347,23 @@ const Card = ({img,title,subtitle,desc}) => {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-6px); }
         }
+        .card-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(255,0,0,0.06);
+          border: 1px solid rgba(255,0,0,0.14);
+          width: 44px;
+          height: 44px;
+          border-radius: 999px;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          text-decoration: none;
+        }
+        .card-link:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 6px 18px rgba(255,0,0,0.15);
+        }
+        .link-icon { display: block; }
       `}</style>
     </>
   );
