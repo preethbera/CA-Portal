@@ -5,8 +5,8 @@ import Api from '../../API/Api';
 import male from '../../images/male_avatar.jpg'
 import female from '../../images/female_avatar.jpg'
 import unknown from '../../images/unknown_avatar.png'
-import { Navigate, useNavigate } from 'react-router-dom';
-import Navbar from '../../components/navbar/Navbarnew';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../../components/navbar/Navbarags';
 const ProfileEdit = () => {
   const [user, setUser] = useState(null);
   const [auth, setAuth] = useState(false)
