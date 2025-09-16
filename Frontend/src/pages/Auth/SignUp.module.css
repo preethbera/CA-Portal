@@ -13,6 +13,7 @@
   padding: 3rem;
   background: rgba(255, 255, 255, 0.02);
   min-height: 600px;
+  overflow-y: auto;
 }
 
 .imageSection {
@@ -126,6 +127,8 @@
   font-size: 0.95rem;
   transition: all 0.3s ease;
   outline: none;
+  min-height: 44px; /* Minimum touch target for mobile */
+  box-sizing: border-box;
 }
 
 .input:focus {
@@ -174,6 +177,8 @@
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 16px;
+  min-height: 44px; /* Minimum touch target for mobile */
+  box-sizing: border-box;
 }
 
 .select:focus {
@@ -259,7 +264,8 @@
 @media (max-width: 768px) {
   .signupContainer {
     flex-direction: column;
-    min-height: 600px;
+    min-height: 100vh;
+    overflow-y: auto;
   }
   
   .imageSection {
@@ -267,33 +273,39 @@
   }
   
   .formSection {
-    padding: 1.5rem 1rem;
-    min-height: 550px;
+    padding: 2rem 1.5rem;
+    min-height: 100vh;
     width: 100%;
     overflow-y: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
   
   .formContent {
     max-width: 100%;
+    width: 100%;
   }
   
   .formContent h2 {
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
   }
   
   .formContent p {
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
   }
   
   .form {
-    gap: 1.2rem;
+    gap: 1.5rem;
   }
   
   .row {
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.5rem;
   }
   
   .inputGroup {
@@ -302,13 +314,80 @@
   
   .input,
   .select {
-    font-size: 0.9rem;
-    padding: 14px 16px;
+    font-size: 1rem;
+    padding: 16px 18px;
     width: 100%;
     box-sizing: border-box;
+    min-height: 52px;
   }
   
   .select {
+    padding-right: 45px;
+    background-position: right 12px center;
+    background-size: 16px;
+  }
+  
+  .label,
+  .selectLabel {
+    font-size: 0.9rem;
+    left: 18px;
+  }
+  
+  .submitButton {
+    font-size: 1.05rem;
+    padding: 16px;
+    margin-top: 1rem;
+    min-height: 52px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signupContainer {
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .formSection {
+    padding: 2rem 1.25rem;
+    min-height: 100vh;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  
+  .formContent h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .formContent p {
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+  }
+  
+  .form {
+    gap: 1.4rem;
+  }
+  
+  .row {
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+  
+  .inputGroup {
+    width: 100%;
+  }
+  
+  .input,
+  .select {
+    font-size: 0.95rem;
+    padding: 15px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 50px;
+  }
+  
+  .select {
+    padding-right: 42px;
     background-position: right 10px center;
     background-size: 14px;
   }
@@ -320,102 +399,54 @@
   }
   
   .submitButton {
-    font-size: 0.95rem;
-    padding: 14px;
-    margin-top: 0.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .signupContainer {
-    min-height: 500px;
-  }
-  
-  .formSection {
-    padding: 1rem 0.75rem;
-    min-height: 450px;
-  }
-  
-  .formContent h2 {
-    font-size: 1.4rem;
-    margin-bottom: 0.3rem;
-  }
-  
-  .formContent p {
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-  }
-  
-  .form {
-    gap: 1rem;
-  }
-  
-  .row {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .inputGroup {
-    width: 100%;
-  }
-  
-  .input,
-  .select {
-    font-size: 0.85rem;
-    padding: 12px 14px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .select {
-    background-position: right 8px center;
-    background-size: 12px;
-  }
-  
-  .label,
-  .selectLabel {
-    font-size: 0.8rem;
-    left: 14px;
-  }
-  
-  .submitButton {
-    font-size: 0.9rem;
-    padding: 12px;
-    margin-top: 0.5rem;
+    font-size: 1rem;
+    padding: 15px;
+    margin-top: 1rem;
+    min-height: 50px;
   }
 }
 
 @media (max-width: 360px) {
   .formSection {
-    padding: 0.75rem 0.5rem;
+    padding: 1.5rem 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
   
   .formContent h2 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
   
   .formContent p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
   }
   
   .form {
-    gap: 0.9rem;
+    gap: 1.3rem;
   }
   
   .input,
   .select {
-    font-size: 0.8rem;
-    padding: 10px 12px;
+    font-size: 0.9rem;
+    padding: 14px 15px;
+    min-height: 48px;
+  }
+  
+  .select {
+    padding-right: 40px;
   }
   
   .label,
   .selectLabel {
-    font-size: 0.75rem;
-    left: 12px;
+    font-size: 0.8rem;
+    left: 15px;
   }
   
   .submitButton {
-    font-size: 0.85rem;
-    padding: 10px;
+    font-size: 0.95rem;
+    padding: 14px;
+    min-height: 48px;
   }
 }
