@@ -8,8 +8,8 @@ function About() {
     "https://i.postimg.cc/Y9yk6M7k/image.png",
     "https://i.postimg.cc/XXSRLvzM/image.png",
     "https://i.postimg.cc/WtL9hGjB/image.png",
-    "https://i.postimg.cc/tRcwRGb3/Screenshot-2025-09-16-at-6-07-38-PM.png",
-    "https://i.postimg.cc/TwLSgtqL/Screenshot-2025-09-16-at-6-08-19-PM.png"
+    "https://i.postimg.cc/Z5SxDmtx/1.png",
+    "https://i.postimg.cc/QNvb15fP/2.png"
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
