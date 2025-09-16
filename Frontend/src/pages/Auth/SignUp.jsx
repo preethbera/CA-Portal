@@ -66,15 +66,33 @@ const SignUp = () => {
     Api.post(`/signup`, data)
       .then((response) => {
         // Axios only reaches here for 2xx responses; treat as success
-        setLoading(false);
         setOpen(true);
         setIsError(false);
-        setError("Signup Successful");
-
-        // Pass a boolean flag so SignIn can show a success snackbar
-        navigate("/SignIn", { state: { replace: true } });
+        setError("Signup successful. Logging you in...");
 
         console.log("Signup success", response.data);
+
+        // Attempt auto-login using the same credentials
+        const loginPayload = { email: formData.email, password: formData.password };
+        setLoading(true);
+        return Api.post(`/signin/`, loginPayload)
+          .then((loginRes) => {
+            setLoading(false);
+            // Persist auth details
+            localStorage.setItem("token", loginRes.data.token);
+            localStorage.setItem("user", JSON.stringify(loginRes.data.user));
+            // Navigate to home/dashboard
+            navigate("/");
+          })
+          .catch((loginErr) => {
+            // Auto-login failed, but signup succeeded; fall back to SignIn
+            console.log("Auto-login after signup failed", loginErr?.response?.data || loginErr);
+            setLoading(false);
+            setIsError(false);
+            setError("Registered successfully. Please log in.");
+            setOpen(true);
+            navigate("/SignIn", { state: { replace: true } });
+          });
       })
       .catch((err) => {
         setLoading(false);
