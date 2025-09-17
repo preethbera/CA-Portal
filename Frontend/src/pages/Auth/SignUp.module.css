@@ -13,7 +13,8 @@
   padding: 3rem;
   background: rgba(255, 255, 255, 0.02);
   min-height: 600px;
-  overflow-y: auto;
+  /* allow page-level scrolling; avoid inner clipping by default */
+  overflow: visible;
 }
 
 .imageSection {
@@ -264,8 +265,9 @@
 @media (max-width: 768px) {
   .signupContainer {
     flex-direction: column;
-    min-height: 100vh;
-    overflow-y: auto;
+    /* let the document decide height on narrow screens */
+    min-height: auto;
+    overflow: visible;
   }
   
   .imageSection {
@@ -274,14 +276,15 @@
   
   .formSection {
     padding: 2rem 1.5rem;
-    min-height: 100vh;
+    /* do not force full viewport height on mobile - allow the box to expand */
+    min-height: auto;
     width: 100%;
-    overflow-y: auto;
+    overflow: visible; /* let the page scroll, not the inner box */
     display: flex;
-    align-items: flex-start;
+    align-items: flex-start; /* stick to top so content flows naturally */
     justify-content: center;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
   
   .formContent {
@@ -343,15 +346,15 @@
 
 @media (max-width: 480px) {
   .signupContainer {
-    min-height: 100vh;
-    overflow-y: auto;
+    min-height: auto;
+    overflow: visible;
   }
   
   .formSection {
     padding: 2rem 1.25rem;
-    min-height: 100vh;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
   
   .formContent h2 {
