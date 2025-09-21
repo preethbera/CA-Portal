@@ -14,7 +14,7 @@ function CompanyIncentives() {
         <div className={styles.cardWrapper}>
           <Card
           img={"https://i.ibb.co/ZRLXzmKx/Screenshot-2025-09-12-at-12-10-00-AM.png"}
-          title={"Skill Ladder"}
+          title={"Skill Ladders"}
           subtitle={"EdTech Platform"}
           desc={"The top 50 Campus Ambassadors will get free upskilling courses that are available on their website"}
           link={"https://skillladders.com/"}
